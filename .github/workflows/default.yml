@@ -1,3 +1,9 @@
+name: My training demo
+workflow_dispatch:
+      inputs:
+      environment: 'Chosen environment'
+      required: true
+      
 Test:
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch'
@@ -15,7 +21,7 @@ Load-Test:
       - run: |
           echo " Testing..."
           sleep 15
- production:
+production:
     runs-on: ubuntu-latest
     needs: [Test, Load-Test]
     environment:
